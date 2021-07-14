@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import FilmList from '../components/FilmList';
 import Button from '../components/Button';
 import './FilmBox.css'
+import FilmForm from '../components/FilmForm';
 
 const FilmBox = () => {
+
 
     const [films, setFilms] = useState([
         {
@@ -32,16 +34,23 @@ const FilmBox = () => {
         }
     ])
 
+    const addFilm = (submittedFilm) => {
+        submittedFilm.id = Date.now();
+        const updatedFilms = [...films, submittedFilm];
+        setFilms(updatedFilms);
+    }
+
     return (
         <div id="box">
             <h3>Upcoming Film Releases for UK</h3>
             <hr />
+            <FilmForm onFilmSubmit={(film) => addFilm(film)}/>
             <FilmList films={films} />
             <hr />
             < Button />
         </div >
     )
-};
+}
 
 export default FilmBox;
 
