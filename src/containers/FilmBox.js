@@ -6,7 +6,7 @@ import FilmForm from '../components/FilmForm';
 
 const FilmBox = () => {
 
-
+    
     const [films, setFilms] = useState([
         {
             id: 1,
